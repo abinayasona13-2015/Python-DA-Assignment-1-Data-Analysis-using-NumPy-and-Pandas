@@ -1,0 +1,92 @@
+import numpy as np
+
+# Daily average temperatures in Celsius over 14 days
+temp_celsius = [22.5, 23.0, 21.5, 24.0, 25.5, 26.0, 24.5, 
+                23.0, 22.0, 21.0, 23.5, 25.0, 26.5, 27.0]
+
+# 1. Create a NumPy array
+temp_array = np.array(temp_celsius)
+
+# Reshape into 2 weeks (rows) x 7 days (columns)
+temp_weekly = temp_array.reshape(2, 7)
+
+print("Original Array shape:", temp_array.shape)
+print("Weekly Grid shape:", temp_weekly.shape)
+print("\nWeekly Temperature Grid (Celsius):\n", temp_weekly)
+
+# 2. Vectorized conversion from Celsius to Fahrenheit
+temp_fahrenheit = temp_array * (9/5) + 32
+
+print("\nTemperatures in Fahrenheit:")
+print(temp_fahrenheit)
+
+# 3. Overall Statistics
+print("\n--- Overall Temperature Statistics (Celsius) ---")
+print(f"Maximum Temperature: {np.max(temp_array):.2f}°C")
+print(f"Minimum Temperature: {np.min(temp_array):.2f}°C")
+print(f"Average (Mean) Temperature: {np.mean(temp_array):.2f}°C")
+print(f"Median Temperature: {np.median(temp_array):.2f}°C")
+print(f"Standard Deviation: {np.std(temp_array):.2f}°C")
+
+
+
+import numpy as np
+
+# 1. Define the 2D temperatures array first
+temperatures = np.array([
+    [22.5, 25.3, 20.8, 23.4, 26.1, 24.8, 21.9],  # Week 1
+    [19.2, 22.5, 21.3, 24.0, 23.5, 22.8, 20.1]   # Week 2
+])
+
+# 2. Now you can safely slice the array
+first_three_days = temperatures[:, :3]
+weekend_days = temperatures[:, -2:]
+middle_three_days = temperatures[:, 2:5]
+
+# 3. Print the results
+print("--- 1. First Three Days ---")
+print(first_three_days)
+
+print("\n--- 2. Weekend (Last Two Days) ---")
+print(weekend_days)
+
+print("\n--- 3. Middle Three Days ---")
+print(middle_three_days)
+
+import numpy as np
+
+# Create a 2D NumPy array combining both weeks
+temperatures = np.array([
+    [22.5, 25.3, 20.8, 23.4, 26.1, 24.8, 21.9],  # Row 0: Week 1
+    [19.2, 22.5, 21.3, 24.0, 23.5, 22.8, 20.1]   # Row 1: Week 2
+])
+
+print("2D Temperatures Array:\n", temperatures)
+print("Shape of the array:", temperatures.shape)
+
+import numpy as np
+
+# Assuming the 2D temperatures array is already defined:
+# temperatures = np.array([
+#     [22.5, 25.3, 20.8, 23.4, 26.1, 24.8, 21.9],  # Week 1
+#     [19.2, 22.5, 21.3, 24.0, 23.5, 22.8, 20.1]   # Week 2
+# ])
+
+# --- 1. Inspection ---
+print("Shape of temperatures array:", temperatures.shape)
+print("Data type:", temperatures.dtype)
+print("Total number of elements:", temperatures.size)
+
+# --- 2. Slicing the 2D Array ---
+# Extract Week 1 (Row 0) and Week 2 (Row 1) individually
+week_1 = temperatures[0]
+week_2 = temperatures[1]
+
+# Extract the weekend (last two days) for BOTH weeks using slicing [rows, columns]
+# ':' means all rows (both weeks), '-2:' means the last two columns (days 6 and 7)
+weekends_both = temperatures[:, -2:]
+
+print("\n--- Sliced Data ---")
+print("Week 1 temperatures:", week_1)
+print("Week 2 temperatures:", week_2)
+print("Weekends for both weeks:\n", weekends_both)
